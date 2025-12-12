@@ -46,7 +46,7 @@ function App() {
   //JSX부분 - 화면 그리기
   return (
     <div className="container">
-        <h1>제목</h1>
+        <h1>Movie Palette</h1>
 
         {/* 검색창 */}
       <div className="search-bar">
