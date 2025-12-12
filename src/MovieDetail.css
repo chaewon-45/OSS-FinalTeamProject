@@ -1,0 +1,64 @@
+.detail-container {
+  width: 85%;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #3c291a;
+  border-radius: 12px;
+  color:#f8e6c8;
+  /* font-family:"Pretendard","Noto Sans KR"; */
+}
+
+/* 상단 영역 */
+.detail-top {
+  display: flex;
+  gap: 35px;
+}
+
+/* 포스터 */
+.detail-poster img {
+  width: 270px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+/* 상세 정보 */
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.detail-info p {
+  font-size: 18px;
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+/* 하단 영역 */
+.detail-bottom {
+  background: #5e442f;
+  margin-top: 40px;
+  padding: 25px 20px;
+  border-radius: 10px;
+  line-height: 1.8;
+  font-size: 17px;
+  border-left:6px solid #d5a253;
+}
+
+.trailer-button {
+  display: inline-block;
+  margin-top: 30px;
+  background: #d5a253;
+  padding: 12px 18px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.trailer-button:hover {
+  background: #b58b45;
+}
