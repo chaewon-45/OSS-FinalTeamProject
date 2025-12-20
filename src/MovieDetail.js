@@ -11,7 +11,7 @@ function MovieDetail() {
   //cast: 출연 배우 배열
   const [cast, setCast] = useState([]);
   //director: 감독 이름 문자열
-  const [director, setDirector] = useState("");
+  const [director, setDirector] = useState(null);
   //trailerKey: 예고편의 ID를 저장하는 변수
   const [trailerKey, setTrailerKey] = useState(null);
 
@@ -37,7 +37,9 @@ function MovieDetail() {
       // data.cast → 배우 배열
       setCast(data.cast);
       //crew 배열에서 job이 "Director" 인 객체 하나 찾기(없을 수도 있으니 ?.name 으로 안전하게 접근)
-      setDirector(data.crew.find(person => person.job === "Director")?.name);
+      const directorObj = data.crew.find(person => person.job === "Director");
+      setDirector(directorObj || null);
+
     };
 
   const fetchTrailer = async () => {
@@ -81,10 +83,11 @@ function MovieDetail() {
                 {/* 예: [{name: "액션"}, {name: "코미디"}] → "액션, 코미디" */}
                 <p>장르: {movie.genres.map(g => g.name).join(", ")}</p>
                 <p>제작사: {movie.production_companies.map(p => p.name)}</p>
+                <p>감독: {director?.name || "정보 없음"}</p>
                 {/* 출연 배우 너무 많으니까 5명까지만 보이도록 */}
                 <p>출연진: {cast.slice(0, 5).map(c => c.name).join(", ")}</p>
-                <p>감독: {director}</p>
-                <p>상영여부: {movie.status}</p>
+                <p>개봉상태: {movie.status}</p>
+                <p>평점: ⭐ {movie.vote_average.toFixed(1)} / 10</p>
             </div>
         </div>
         <div className="detail-bottom">
@@ -92,15 +95,6 @@ function MovieDetail() {
             <p>{movie.overview}</p>
         </div>
         {trailerKey && (
-          // <iframe
-          //   width="560"
-          //   height="315"
-          //   src={`https://www.youtube.com/embed/${trailerKey}`}
-          //   title="YouTube video player"
-          //   frameBorder="0"
-          //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          //   allowFullScreen
-          // ></iframe>
           <a
             href={`https://www.youtube.com/watch?v=${trailerKey}`}
             //새 탭에서 열리게 하는 옵션
@@ -112,16 +106,51 @@ function MovieDetail() {
             🎬 예고편 보러가기
           </a>
         )}
-        <p>출연진: {cast.slice(0, 5).map(c => c.name).join(", ")}</p>
-                  {cast.slice(0,5).map((cast, index) => {
-                  return (
-                    <div key={index}>
-                      <img src={`https://image.tmdb.org/t/p/w300${cast.profile_path}`} 
-                      alt={movie.title}
-                      />
-                    </div>
-                  )
-                  })}
+
+        {/* 감독 카드 */}
+        {director && (
+          <div className="director-section">
+            <p className="director-title">감독</p>
+
+            <div className="director-card">
+              <img
+                className="director-photo"
+                src={
+                  director.profile_path
+                    ? `https://image.tmdb.org/t/p/w300${director.profile_path}`
+                    : "/no-poster.png"
+                }
+                alt={director.name}
+              />
+              <p className="director-name">{director.name}</p>
+            </div>
+          </div>
+        )}
+
+        {/* 출연진 사진 */}
+        <div className="cast-section">
+          <p className="cast-title">출연진</p>
+
+          <div className="cast-list">
+            {cast.slice(0, 5).map((cast, index) => {
+              return (
+                <div className="cast-card" key={index}>
+                  <img
+                    src={
+                      cast.profile_path 
+                      ? `https://image.tmdb.org/t/p/w300${cast.profile_path}`
+                      :"/no-poster.png"
+                    }
+                    alt={cast.name}
+                  />
+                  <p className="cast-name">{cast.name}</p>
+                  <p className="cast-character">{cast.character}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
 
     </div>
   );

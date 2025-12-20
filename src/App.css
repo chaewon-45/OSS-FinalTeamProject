@@ -1,7 +1,8 @@
 /* 전체 레이아웃 */
 body {
   background-color: #2c1b10;
-  /* font-family: "Pretendard",sans-serif; */
+  /*font-family: "Montserrat", "Pretendard", sans-serif;*/
+  font-weight: 400;
   color: #fff3da;
 }
 
@@ -12,6 +13,12 @@ body {
   padding-bottom: 40px;
 }
 
+
+h1, .row-section h2 {
+  font-family: "Montserrat", "Pretendard", sans-serif;
+}
+
+
 /* 사이트명 */
 h1 {
   text-align: center;
@@ -20,6 +27,119 @@ h1 {
   font-size: 40px;
   font-weight: 800;;
   letter-spacing: 2px;
+}
+
+/* 필터 박스 */
+.filter-box {
+  background-color: #3c291a;
+  padding: 18px 22px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+/* 장르별 필터 */
+.genre-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+/* 장르별 필터 - 버튼 */
+.genre-filter button {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #d5a253;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* 장르별 필터 - 버튼 호버 효과 */
+.genre-filter button:hover {
+  background-color: #d5a253;
+  color: #2c1b10;
+  border: none;
+}
+
+/* 장르별 필터 - 선택된 버튼 */
+.genre-filter button.active {
+  background-color: #d5a253;
+  color: #fff;
+  border: none;
+}
+
+.year-rating-filter {
+  display: flex;
+  gap: 40px;
+}
+
+/* 연도별 필터 */
+.year-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+}
+
+/* 연도별 필터 - 입력 부분 */
+.year-filter input {
+  width: 100px;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #d5a253;
+}
+
+.rating-filter {
+  position:relative;
+
+}
+/* 평점별 필터 - 슬라이더 부분 */
+.rating-filter input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 4px;
+  outline: none;
+  width: 200px;
+}
+
+.rating-filter input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #4aa3df;
+  cursor: pointer;
+}
+
+.rating-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 210px;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.filter-apply {
+  text-align: right;
+}
+
+.filter-apply button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #d5a253;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filter-apply button:hover {
+  background-color: #b58b45;
 }
 
 /* 검색 영역 */
@@ -52,7 +172,6 @@ h1 {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  border: none;
   transition: 0.2s;
 }
 
@@ -94,6 +213,14 @@ h1 {
   font-size: 15px;
   font-weight: 600;
   color: #ffdfb1;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  line-height: 1.3;
+  height: calc(1.3em * 2);
 }
 
 /* 영화 링크(밑줄 생김 방지) */
@@ -106,3 +233,191 @@ ul {
   list-style: none; 
 }
 
+/* 장르 섹션 */
+.row-section {
+  margin: 40px 0;
+}
+
+/* 장르 제목 */
+.row-section h2 {
+  color: #ffebc0;
+  margin-bottom: 16px;
+}
+
+/* 가로 스크롤 리스트 */
+.row-movie-list {
+  display: flex;
+  gap: 20px;
+  overflow-x: hidden;
+  padding-bottom: 10px;
+  padding: 0 4px;
+}
+
+/* 스크롤바 스타일 (크롬 기준) */
+.row-movie-list::-webkit-scrollbar {
+  height: 6px;
+}
+.row-movie-list::-webkit-scrollbar-thumb {
+  background-color: #b58b45;
+  border-radius: 10px;
+}
+
+/* 영화 카드 */
+.row-movie-list li {
+  flex: 0 0 auto;
+  width: 160px;
+  text-align: center;
+  background: #3c291a;
+  padding: 12px;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+/* 포스터 */
+.row-movie-list img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+.row-movie-list img:hover {
+  transform: scale(1.05);
+}
+
+.row-scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background: rgba(60, 41, 26, 0.9);
+  color: #ffebc0;
+  border: none;
+  font-size: 22px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.scroll-btn.left {
+  left: -50px;
+}
+
+.scroll-btn.right {
+  right: -50px;
+}
+
+@media (max-width: 552px) {
+
+  /* 컨테이너 */
+  .container {
+    width: 94%;
+  }
+
+  /* 타이틀 */
+  h1 {
+    font-size: 24px;
+    margin: 24px 0 12px;
+    letter-spacing: 1px;
+  }
+
+  /* 필터 박스 */
+  .filter-box {
+    padding: 14px 16px;
+  }
+
+  /* 장르 버튼 */
+  .genre-filter {
+    gap: 4px;
+  }
+
+  .genre-filter button {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+
+  /* 연도 / 평점 필터 세로 배치 */
+  .year-rating-filter {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* 검색 */
+  .search-bar {
+    justify-content: center;
+  }
+
+  .search-bar input {
+    width: 100%;
+    max-width: 220px;
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .search-bar button {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  /* 장르 섹션 */
+  .row-section {
+    margin: 28px 0;
+  }
+
+  .row-section h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  /* 가로 스크롤 */
+  .row-movie-list {
+    padding-bottom: 10px;
+    gap: 12px;
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 카드 */
+  .row-movie-list li {
+    width: 120px;
+    height: auto;
+  }
+
+  /* 포스터 */
+  .row-movie-list img {
+    height: 170px;
+  }
+
+  /* 제목 (2줄 고정) */
+  .row-movie-list .movie-title {
+    font-size: 12px;
+    height: 30px;
+    line-height: 1.2;
+  }
+
+  /* 좌우 버튼 완전 제거 */
+  .scroll-btn {
+    display: none;
+  }
+
+
+  .movie-list {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+  .movie-list img {
+    height: 280px;
+  }
+}
+
+  

@@ -62,3 +62,169 @@
 .trailer-button:hover {
   background: #b58b45;
 }
+
+/* 출연진 섹션 전체 감싸는 느낌 */
+.cast-section {
+  margin-top: 40px;
+}
+
+/* 출연진 제목 텍스트 */
+.cast-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffebc0;
+  margin-bottom: 16px;
+}
+
+/* 출연진 카드 리스트 */
+.cast-list {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;          /* 가로 스크롤 */
+  overflow-y: hidden;
+  padding-bottom: 12px;
+}
+
+/* 스크롤바 스타일 (크롬 기준) */
+.cast-list::-webkit-scrollbar {
+  height: 6px;
+}
+.cast-list::-webkit-scrollbar-thumb {
+  background: #b58b45;
+  border-radius: 10px;
+}
+
+/* 출연진 카드 하나 */
+.cast-card {
+  flex: 0 0 auto;
+  width: 120px;
+  text-align: center;
+}
+
+/* 배우 사진 */
+.cast-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  background-color: #3c291a;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* hover 효과 */
+.cast-card img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* 배우 이름 */
+.cast-name {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffe8c4;
+}
+
+/* 배역 이름 */
+.cast-role {
+  font-size: 12px;
+  color: #d5a253;
+  margin-top: 4px;
+  line-height: 1.3;
+  
+}
+
+/* 감독 섹션 */
+.director-section {
+  margin-top: 40px;
+}
+
+.director-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffebc0;
+  margin-bottom: 16px;
+}
+
+/* 감독 카드 */
+.director-card {
+  width: 140px;
+  text-align: center;
+}
+
+/* 감독 사진 */
+.director-photo {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  background-color: #3c291a;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.director-photo:hover {
+  transform: scale(1.05);
+}
+
+/* 감독 이름 */
+.director-name {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffe8c4;
+}
+
+
+
+@media (max-width: 552px) {
+
+  .detail-container {
+    width: 94%;
+    margin: 30px auto;
+    padding: 20px;
+  }
+
+  /* 포스터 위 / 정보 아래 */
+  .detail-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .detail-poster img {
+    width: 200px;
+  }
+
+  .detail-info {
+    margin-top: 20px;
+    align-items: center;
+  }
+
+  .detail-info p {
+    font-size: 14px;
+  }
+
+  .detail-bottom {
+    font-size: 14px;
+    padding: 18px 16px;
+  }
+
+  .trailer-button {
+    display: block;
+    text-align: center;
+  }
+
+  .cast-card {
+    width: 100px;
+  }
+
+  .cast-card img {
+    height: 140px;
+  }
+}
+
+.cast-character {
+  font-size: 13px;
+  color: #cbb89d;
+}
